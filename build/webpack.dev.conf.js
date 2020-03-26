@@ -76,8 +76,14 @@ module.exports = merge(baseConfig, {
 				],
 				exclude: /node_modules/,
                 include: path.resolve(__dirname, '../src')
-				
+			},
+
+			{
+				test: /\.styl(us)$/,
+				use: ['vue-style-loader', 'css-loader', 'stylus-loader', 'postcss-loader']
 			}
+			  
+			
 		]
 	},
 	resolve: {

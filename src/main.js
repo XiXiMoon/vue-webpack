@@ -9,7 +9,10 @@ alert("hello");
 // 测试scss文件
 // import './styles/demo.scss'
 
-import './styles/demo.less'
+// 测试less文件
+// import './styles/demo.less'
+
+import './styles/demo.styl'
 
 var vm = new Vue({
     el: "#app",
