@@ -109,9 +109,22 @@ module.exports = merge(baseConfig, {
 					}
 				  }
 				]
-			  },
+			},
 			  
-			  
+			{
+				test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
+				use: [
+				  {
+					loader: 'url-loader',
+					options: {
+					  limit: 5120,
+					  esModule: false,
+					  fallback: 'file-loader',
+					  name: 'static/fonts/[name].[hash:4].[ext]'
+					}
+				  }
+				]
+			}
 			
 		]
 	},
