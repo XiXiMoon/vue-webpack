@@ -29,11 +29,54 @@ module.exports = merge(baseConfig, {
 			{
 				test: /\.scss$/,
 				use: [
-					'style-loader',
-					'css-loader',
-					'sass-loader',
-					'postcss-loader'
-				]
+					{
+						loader: "style-loader"
+					},
+					{
+						loader: "css-loader",
+						options: {
+							sourceMap:true
+						}
+					},
+					{
+						loader: "sass-loader",
+						options:{
+							sourceMap: true
+						}
+					},
+					{
+						loader: "postcss-loader"
+					}
+				],
+				exclude: /node_modules/,
+                include: path.resolve(__dirname, '../src')
+			},
+
+			{
+				test: /\.less$/,
+				use:  [
+					{
+						loader: "style-loader"
+					},
+					{
+						loader: "css-loader",
+						options: {
+							sourceMap:true
+						}
+					},
+					{
+						loader: "less-loader",
+						options:{
+							sourceMap: true
+						}
+					},
+					{
+						loader: "postcss-loader"
+					}
+				],
+				exclude: /node_modules/,
+                include: path.resolve(__dirname, '../src')
+				
 			}
 		]
 	},

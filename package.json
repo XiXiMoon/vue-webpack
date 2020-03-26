@@ -22,6 +22,8 @@
     "autoprefixer": "^9.7.5",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.4.2",
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0",
     "node-sass": "^4.13.1",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.2",
