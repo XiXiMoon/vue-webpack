@@ -15,7 +15,18 @@ module.exports = merge(baseConfig, {
 
 	module:{
 		rules: [
+			{
+				test: /\.jsx?$/,
+				exclude: /node_modules/,
+				loader: "babel-loader"
+			}
 		]
+	},
+	resolve: {
+		alias: {
+		 'vue$': 'vue/dist/vue.esm.js' 
+		}
+	   
 	},
 	plugins: [
 	],
