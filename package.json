@@ -1,0 +1,33 @@
+{
+  "name": "vue-webpack4",
+  "version": "1.0.1",
+  "description": "vue2.0+webpack4搭建的单页项目",
+  "scripts": {
+    "dev": "webpack --config ./build/webpack.dev.conf.js",
+    "dev-mock": "cross-env NODE_ENV=dev-mock webpack --config build/webpack.dev.conf.js",
+    "dev-api": "cross-env NODE_ENV=dev-api webpack --config build/webpack.dev.conf.js",
+    "test": "cross-env NODE_ENV=test webpack --config build/webpack.test.conf.js",
+    "pre": "cross-env NODE_ENV=pre webpack --config build/webpack.pre.conf.js",
+    "build": "cross-env NODE_ENV=prod webpack --config build/webpack.prod.conf.js",
+    "delop": "cross-env NODE_ENV=prod webpack --config build/webpack.prod.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XiXiMoon/vue-webpack4.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XiXiMoon/vue-webpack4/issues"
+  },
+  "homepage": "https://github.com/XiXiMoon/vue-webpack4#readme",
+  "devDependencies": {
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "vue": "^2.6.11"
+  }
+}
