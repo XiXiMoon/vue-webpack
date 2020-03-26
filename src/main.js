@@ -10,9 +10,13 @@ alert("hello");
 // import './styles/demo.scss'
 
 // 测试less文件
-// import './styles/demo.less'
+import './styles/demo.less'
 
-import './styles/demo.styl'
+var avator = require("./images/2.jpeg")
+
+console.log(avator)
+
+
 
 var vm = new Vue({
     el: "#app",

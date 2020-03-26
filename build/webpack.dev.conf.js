@@ -81,6 +81,18 @@ module.exports = merge(baseConfig, {
 			{
 				test: /\.styl(us)$/,
 				use: ['vue-style-loader', 'css-loader', 'stylus-loader', 'postcss-loader']
+			},
+
+			{
+				test: /\.(jpe?g|png|gif|webp|svg|ico)$/,
+				use:{
+					loader: "url-loader",
+					options:{
+						name: '[name]_[hash:8].[ext]',
+						outputPath: 'static/images/',
+						limit: 10000   
+					}
+				}
 			}
 			  
 			
