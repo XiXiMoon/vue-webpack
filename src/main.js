@@ -16,7 +16,12 @@ var avator = require("./images/2.jpeg")
 
 console.log(avator)
 
+const a = "测试";
+console.log(a);
 
+for(let b of [1,2,3,4]) {
+    console.log(b);
+}
 
 var vm = new Vue({
     el: "#app",

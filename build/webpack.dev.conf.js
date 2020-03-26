@@ -90,10 +90,27 @@ module.exports = merge(baseConfig, {
 					options:{
 						name: '[name]_[hash:8].[ext]',
 						outputPath: 'static/images/',
+						esModule: false,
 						limit: 10000   
 					}
 				}
-			}
+			},
+
+			{
+				test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+				use: [
+				  {
+					loader: 'url-loader',
+					options: {
+					  limit: 5120,
+					  esModule: false,
+					  fallback: 'file-loader',
+					  name: 'static/media/[name].[hash:4].[ext]'
+					}
+				  }
+				]
+			  },
+			  
 			  
 			
 		]
