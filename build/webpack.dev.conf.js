@@ -32,7 +32,7 @@ module.exports = merge(baseConfig, {
 				test: /\.scss$/,
 				use: [
 					{
-						loader: "style-loader"
+						loader: "vue-style-loader"
 					},
 					{
 						loader: "css-loader",
@@ -58,7 +58,7 @@ module.exports = merge(baseConfig, {
 				test: /\.less$/,
 				use:  [
 					{
-						loader: "style-loader"
+						loader: "vue-style-loader"
 					},
 					{
 						loader: "css-loader",
@@ -82,7 +82,7 @@ module.exports = merge(baseConfig, {
 
 			{
 				test: /\.styl(us)$/,
-				use: ['vue-style-loader', 'css-loader', 'stylus-loader', 'postcss-loader']
+				use: ['vue-style-loader', 'css-loader',  'postcss-loader', 'stylus-loader']
 			},
 
 			{
@@ -142,12 +142,12 @@ module.exports = merge(baseConfig, {
 	resolve: {
 		alias: {
 		// 写了这句，我们可以这样写代码 import Vue from 'vue', 并且引入的是vue/dist/vue.runtime.esm.js这个版本，不然默认引入的是vue.js。这个在github的vue官方仓库dist目录下有解释。
-		 'vue$': 'vue/dist/vue.runtime.esm.js',
+		 'vue$': 'vue/dist/vue.esm.js',
 		 // 写了这句，我们可以这样写代码 import api from '@/api/api.js'，省去到处找路径定位到src的麻烦
 		 "@": path.resolve(__dirname, "../src") 
 		},
 		// 添加一个 resolve.extensions 属性，方便我们引入依赖或者文件的时候可以省略后缀
-  		// 我们在引入文件时可以这样写 import api from '@/api/api'
+  		// 我们在引入文件时可以这样写 import api from '@/api/api',将 `.jss、.vue` 添加为一个可解析的扩展名
 		extensions: ["*", ".js", ".vue"]
 	},
 	plugins: [
