@@ -145,4 +145,16 @@ module.exports = merge(baseConfig, {
 			//chunks: ['main']
 		})
 	],
+
+	devServer:{
+		contentBase:path.resolve(__dirname, '../delop-code/dev'),
+		port: "8080",
+		host: "localhost",
+		hot: true,
+		open: true
+		// proxy: {},
+		// publicPath: "/static/",
+		// after:{},
+		// before: function(){}
+	},
 })

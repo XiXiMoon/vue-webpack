@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "vue2.0+webpack4搭建的单页项目",
   "scripts": {
-    "dev": "webpack --config ./build/webpack.dev.conf.js"
+    "dev": "webpack-dev-server --inline --progress --config ./build/webpack.dev.conf.js"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
     "vue-style-loader": "^4.1.2",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
