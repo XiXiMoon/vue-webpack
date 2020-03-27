@@ -1,5 +1,5 @@
 import Vue from "vue"
-//import App from './App'
+import App from './App'
 
 alert("hello");
 
@@ -25,8 +25,6 @@ for(let b of [1,2,3,4]) {
 
 var vm = new Vue({
     el: "#app",
-    data: {
-        logo: avator,
-        msg:"hello vue"
-    }
+    template:'<App/>',
+    comments: {App}
 })
