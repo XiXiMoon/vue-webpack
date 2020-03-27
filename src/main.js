@@ -26,6 +26,7 @@ for(let b of [1,2,3,4]) {
 var vm = new Vue({
     el: "#app",
     data: {
+        logo: avator,
         msg:"hello vue"
     }
 })

@@ -1,6 +1,8 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = merge(baseConfig, {
 	mode: "development",
@@ -9,8 +11,8 @@ module.exports = merge(baseConfig, {
 	},
 	output: {
 		path: path.resolve(__dirname, "../delop-code", "dev"),  
-		filename: './static/js/[name].[hash].js',  
-		publicPath: './static'  
+		filename: './static/js/[name].[hash].js'
+		// publicPath: './static'  
 	},
 
 	module:{
@@ -135,5 +137,12 @@ module.exports = merge(baseConfig, {
 	   
 	},
 	plugins: [
+		new HtmlWebpackPlugin({
+			title: "vue-webpack",
+			template: path.resolve(__dirname, "../src/index.html"),
+			filename: path.resolve(__dirname, "../delop-code/dev/index.html"),
+			minify: true
+			//chunks: ['main']
+		})
 	],
 })
