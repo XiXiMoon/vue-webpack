@@ -8,6 +8,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = merge(baseConfig, {
 	mode: "development",
+	devtool: 'cheap-module-eval-source-map',
 	entry: {
 		main: './src/main.js'
 	},
