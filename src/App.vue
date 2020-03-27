@@ -4,7 +4,7 @@
         <div class="word">
             {{msg}}
             <div class="word2">
-                123234568
+                12
             </div>
         </div>
   </div>
