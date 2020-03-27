@@ -4,6 +4,7 @@ const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = merge(baseConfig, {
 	mode: "development",
@@ -160,9 +161,14 @@ module.exports = merge(baseConfig, {
 			//chunks: ['main']
 		}),
 
+		new CleanWebpackPlugin({
+			cleanOnceBeforeBuildPatterns:[path.resolve(__dirname, "../delop-code/dev/static/js")]
+		}),
+
 		new VueLoaderPlugin(),
 
 		new webpack.HotModuleReplacementPlugin()
+
 	],
 
 	//整个页面会刷新，和热更新不同
