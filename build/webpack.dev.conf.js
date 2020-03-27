@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require("webpack");
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -159,15 +160,19 @@ module.exports = merge(baseConfig, {
 			//chunks: ['main']
 		}),
 
-		new VueLoaderPlugin()
+		new VueLoaderPlugin(),
+
+		new webpack.HotModuleReplacementPlugin()
 	],
 
+	//整个页面会刷新，和热更新不同
 	devServer:{
 		contentBase:path.resolve(__dirname, '../delop-code/dev'),
 		port: "8080",
 		host: "localhost",
 		hot: true,
-		open: true
+		open: true,
+		//hotOnly:true        //即使HMR不生效，浏览器也不自动刷新功能
 		// proxy: {},
 		// publicPath: "/static/",
 		// after:{},
