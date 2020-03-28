@@ -4,7 +4,8 @@
   "description": "vue2.0+webpack4搭建的单页项目",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config ./build/webpack.dev.conf.js",
-    "test": "cross-env NODE_ENV=test webpack --config build/webpack.test.conf.js"
+    "delopToTest": "cross-env NODE_ENV=test webpack --config build/webpack.test.conf.js",
+    "delopToPre": "cross-env NODE_ENV=pre webpack --config build/webpack.pre.conf.js"
   },
   "repository": {
     "type": "git",
