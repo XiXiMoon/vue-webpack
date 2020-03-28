@@ -2,12 +2,12 @@ const path = require('path');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf');
 
-const testConfig = {
-    mode: "development",
+const testConfig = merge(baseConfig, {
+	mode: "development",
 
-    devtool: "cheap-module-eval-source-map",
-    
-    module:{
+	devtool: "cheap-module-eval-source-map",
+		
+	module:{
 		rules: [
 			{
 				test: /\.css$/,
@@ -37,7 +37,7 @@ const testConfig = {
 					}
 				],
 				exclude: /node_modules/,
-                include: path.resolve(__dirname, '../src')
+				include: path.resolve(__dirname, '../src')
 			},
 
 			{
@@ -63,7 +63,7 @@ const testConfig = {
 					}
 				],
 				exclude: /node_modules/,
-                include: path.resolve(__dirname, '../src')
+				include: path.resolve(__dirname, '../src')
 			},
 
 			{
@@ -72,7 +72,8 @@ const testConfig = {
 			},
 
 		]
-    }
-}
+	}
+})
+
 
 module.exports = testConfig;
