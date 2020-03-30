@@ -75,7 +75,7 @@ const testConfig = merge(baseConfig, {
 			},
 
 			{
-				test: /\.styl(us)$/,
+				test: /\.styl(us)?$/,
 				use: [
 					{
 						loader: MiniCssExtractPlugin.loader

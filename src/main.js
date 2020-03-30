@@ -12,6 +12,9 @@ alert("hello");
 // 测试less文件
 import './styles/demo.less'
 
+//测试字体文件
+import './styles/font.styl'
+
 var avator = require("./images/2.jpeg")
 
 console.log(avator)

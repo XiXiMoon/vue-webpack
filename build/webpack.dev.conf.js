@@ -68,7 +68,7 @@ const devConfig = merge(baseConfig, {
 			},
 
 			{
-				test: /\.styl(us)$/,
+				test: /\.styl(us)?$/,
 				use: [
 					'vue-style-loader',
 					{

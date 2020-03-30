@@ -75,7 +75,13 @@ const baseConfig = {
 				}
 			},
 
-			
+			//处理html文件中图片（负责引入img，从而能被url-loader进行处理）
+			{
+				test: /\.html$/,
+                use: [
+                    'html-loader'
+                ]
+			}			
 		]
 	},
 	plugins: [
