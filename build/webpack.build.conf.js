@@ -3,6 +3,7 @@ const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
 
 const preConfig = merge(baseConfig, {
 	mode: "production",
@@ -17,7 +18,12 @@ const preConfig = merge(baseConfig, {
 					{
 						loader: MiniCssExtractPlugin.loader
 					},
-					'css-loader'
+					{
+						loader: "css-loader",
+						options: {
+							sourceMap:true
+						}
+					}
 				]
 			},
 
@@ -103,7 +109,13 @@ const preConfig = merge(baseConfig, {
 
 	optimization: {
 		minimizer: [
-            new OptimizeCssAssetsWebpackPlugin()
+			//压缩css
+			new OptimizeCssAssetsWebpackPlugin(),
+			
+			//压缩js
+			new UglifyWebpackPlugin({
+                parallel: 4	//使用多进程并行运行可提高构建速度。并发运行的默认数量：os.cpus().length - 1。
+            })
         ]
 	}
 })
