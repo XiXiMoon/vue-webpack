@@ -22,7 +22,8 @@ const devConfig = merge(baseConfig, {
 					{
 						loader: "css-loader",
 						options: {
-							sourceMap:true
+							sourceMap:true,
+							importLoaders: 2	//importLoaders为2表示在js或sass中，对于在这些里面引入的sass文件等必须先进行2个loader，即后面的loader，保证引入的loader也从下面的loader开始执行，否则不执行下面的loader
 						}
 					},
 					{
@@ -48,7 +49,8 @@ const devConfig = merge(baseConfig, {
 					{
 						loader: "css-loader",
 						options: {
-							sourceMap:true
+							sourceMap:true,
+							importLoaders: 2	//importLoaders为2表示在js或sass中，对于在这些里面引入的sass文件等必须先进行2个loader，即后面的loader，保证引入的loader也从下面的loader开始执行，否则不执行下面的loader
 						}
 					},
 					{
@@ -67,7 +69,18 @@ const devConfig = merge(baseConfig, {
 
 			{
 				test: /\.styl(us)$/,
-				use: ['vue-style-loader', 'css-loader',  'postcss-loader', 'stylus-loader']
+				use: [
+					'vue-style-loader',
+					{
+						loader: "css-loader",
+						options: {
+							sourceMap:true,
+							importLoaders: 2	//importLoaders为2表示在js或sass中，对于在这些里面引入的sass文件等必须先进行2个loader，即后面的loader，保证引入的loader也从下面的loader开始执行，否则不执行下面的loader
+						}
+					},
+					'postcss-loader',
+					'stylus-loader'
+				]
 			},
 
 		]

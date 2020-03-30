@@ -73,7 +73,9 @@ const baseConfig = {
 					},
 					// hotReload: false //改为false可关闭vue文件的热重载，即关闭HotModuleReplacementPlugin功能
 				}
-			}
+			},
+
+			
 		]
 	},
 	plugins: [
