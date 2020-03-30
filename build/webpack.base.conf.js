@@ -97,7 +97,12 @@ const baseConfig = {
 			cleanOnceBeforeBuildPatterns:[path.resolve(__dirname, "../delop-code")]
 		}),
 
-		new VueLoaderPlugin()
+		new VueLoaderPlugin(),
+
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			_: 'lodash'
+        }),
 	],
 	resolve: {
 		alias: {
