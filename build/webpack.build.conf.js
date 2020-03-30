@@ -2,6 +2,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 
 const preConfig = merge(baseConfig, {
 	mode: "production",
@@ -91,7 +92,6 @@ const preConfig = merge(baseConfig, {
 					'stylus-loader'
 				]
 			},
-
 		]
 	},
 
@@ -99,7 +99,13 @@ const preConfig = merge(baseConfig, {
 		new MiniCssExtractPlugin({
 			filename: '/static/css/[name].[contenthash:8].css'
 		})
-	]
+	],
+
+	optimization: {
+		minimizer: [
+            new OptimizeCssAssetsWebpackPlugin()
+        ]
+	}
 })
 
 module.exports = preConfig;

@@ -94,7 +94,7 @@ const baseConfig = {
 		}),
 
 		new CleanWebpackPlugin({
-			cleanOnceBeforeBuildPatterns:[path.resolve(__dirname, "../delop-code/static/js")]
+			cleanOnceBeforeBuildPatterns:[path.resolve(__dirname, "../delop-code")]
 		}),
 
 		new VueLoaderPlugin()
