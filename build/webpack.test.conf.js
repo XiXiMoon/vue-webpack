@@ -1,29 +1,36 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const testConfig = merge(baseConfig, {
-	mode: "development",
+    mode: "development",
 
-	devtool: "cheap-module-eval-source-map",
-		
-	module:{
+    devtool: "cheap-module-eval-source-map",
+    
+    module:{
 		rules: [
 			{
 				test: /\.css$/,
-				use: ['style-loader', 'css-loader']
+				use: [
+					{
+						loader: MiniCssExtractPlugin.loader
+					},
+					'css-loader'
+				]
 			},
 
 			{
 				test: /\.scss$/,
 				use: [
 					{
-						loader: "vue-style-loader"
+						loader: MiniCssExtractPlugin.loader
 					},
 					{
 						loader: "css-loader",
 						options: {
-							sourceMap:true
+							sourceMap:true,
+							importLoaders: 2	//importLoaders为2表示在js或sass中，对于在这些里面引入的sass文件等必须先进行2个loader，即后面的loader，保证引入的loader也从下面的loader开始执行，否则不执行下面的loader
 						}
 					},
 					{
@@ -37,19 +44,20 @@ const testConfig = merge(baseConfig, {
 					}
 				],
 				exclude: /node_modules/,
-				include: path.resolve(__dirname, '../src')
+                include: path.resolve(__dirname, '../src')
 			},
 
 			{
 				test: /\.less$/,
 				use:  [
 					{
-						loader: "vue-style-loader"
+						loader: MiniCssExtractPlugin.loader
 					},
 					{
 						loader: "css-loader",
 						options: {
-							sourceMap:true
+							sourceMap:true,
+							importLoaders: 2	//importLoaders为2表示在js或sass中，对于在这些里面引入的sass文件等必须先进行2个loader，即后面的loader，保证引入的loader也从下面的loader开始执行，否则不执行下面的loader
 						}
 					},
 					{
@@ -63,17 +71,35 @@ const testConfig = merge(baseConfig, {
 					}
 				],
 				exclude: /node_modules/,
-				include: path.resolve(__dirname, '../src')
+                include: path.resolve(__dirname, '../src')
 			},
 
 			{
 				test: /\.styl(us)$/,
-				use: ['vue-style-loader', 'css-loader',  'postcss-loader', 'stylus-loader']
+				use: [
+					{
+						loader: MiniCssExtractPlugin.loader
+					},
+					{
+						loader: "css-loader",
+						options: {
+							sourceMap:true,
+							importLoaders: 2	//importLoaders为2表示在js或sass中，对于在这些里面引入的sass文件等必须先进行2个loader，即后面的loader，保证引入的loader也从下面的loader开始执行，否则不执行下面的loader
+						}
+					},
+					'postcss-loader',
+					'stylus-loader'
+				]
 			},
 
 		]
-	}
+	},
+	
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename: '/static/css/[name].[contenthash:8].css'
+		  })
+	]
 })
-
 
 module.exports = testConfig;
