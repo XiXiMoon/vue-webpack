@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const webpack = require("webpack");
 
 const baseConfig = {
 	entry: {
@@ -102,7 +103,7 @@ const baseConfig = {
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			_: 'lodash'
-        }),
+        })
 	],
 	resolve: {
 		alias: {

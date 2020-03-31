@@ -4,6 +4,7 @@ const baseConfig = require('./webpack.base.conf');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const preConfig = merge(baseConfig, {
 	mode: "production",
@@ -104,6 +105,10 @@ const preConfig = merge(baseConfig, {
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename: '/static/css/[name].[contenthash:8].css'
+		}),
+
+		new BundleAnalyzerPlugin({
+			analyzerMode: 'static'
 		})
 	],
 

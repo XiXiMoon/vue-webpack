@@ -2,6 +2,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const testConfig = merge(baseConfig, {
     mode: "development",
@@ -98,6 +99,10 @@ const testConfig = merge(baseConfig, {
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename: '/static/css/[name].[contenthash:8].css'
+		}),
+
+		new BundleAnalyzerPlugin({
+			analyzerMode: 'static'
 		})
 	]
 })
