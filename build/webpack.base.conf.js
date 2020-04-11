@@ -4,6 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const webpack = require("webpack");
+const HappyPack = require('happypack');
+const os = require('os'); // node 提供的系统操作模块
+
+ // 根据我的系统的内核数量 指定线程池个数 也可以其他数量
+const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length})
 
 const baseConfig = {
 	entry: {
@@ -16,11 +21,11 @@ const baseConfig = {
 	},
 	module: {
 		noParse: /jquery|lodash/,
-		
+
 		rules: [
 			{
 				test: /\.jsx?$/,
-				loader: "babel-loader?cacheDirectory",
+				loader: "happypack/loader?id=babel",
 				exclude: /node_modules/,
 				include: path.resolve(__dirname, '../src')
 			},
@@ -116,7 +121,15 @@ const baseConfig = {
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			_: 'lodash'
-        })
+		}),
+		
+		new HappyPack({ // 基础参数设置
+			id: 'babel', // 上面loader?后面指定的id
+			loaders: ['babel-loader?cacheDirectory'], // 实际匹配处理的loader
+			threadPool: happyThreadPool,
+			// cache: true // 已被弃用
+			verbose: true
+		})
 	],
 	resolve: {
 		alias: {
