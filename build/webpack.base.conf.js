@@ -126,9 +126,12 @@ const baseConfig = {
 		 "service":   path.resolve(__dirname, "../src/service"),
 		 "utils": path.resolve(__dirname, '../src/utils'),
 		},
+		
 		// 添加一个 resolve.extensions 属性，方便我们引入依赖或者文件的时候可以省略后缀
   		// 我们在引入文件时可以这样写 import api from '@/api/api',将 `.jss、.vue` 添加为一个可解析的扩展名
-		extensions: ["*", ".js", ".vue"]
+		extensions: ["*", ".js", ".vue"],
+
+		modules: ['node_modules']
 	}
 };
 
