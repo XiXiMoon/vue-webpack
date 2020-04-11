@@ -15,6 +15,8 @@ const baseConfig = {
 		// publicPath: 'http://cdn.com.cn',    //打包生成的js在生成的html模板中引入的前缀，即html文件交给后端，js发部到cdn上，自动引入
 	},
 	module: {
+		noParse: /jquery|lodash/,
+		
 		rules: [
 			{
 				test: /\.jsx?$/,
