@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require("webpack");
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf');
+const friendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 const devConfig = merge(baseConfig, {
 	mode: "development",
@@ -87,7 +88,9 @@ const devConfig = merge(baseConfig, {
 	},
 	
 	plugins: [
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),	//webpack4中可以直接通过dev-server来启动热模块刷新，无需单独配置，完全启用热模块替换，才用此插件
+		
+		new friendlyErrorsWebpackPlugin()
 	],
 
 	//整个页面会刷新，和热更新不同
@@ -101,7 +104,8 @@ const devConfig = merge(baseConfig, {
 		// proxy: {},
 		// publicPath: "/static/",
 		// after:{},
-		// before: function(){}
+		// before: function(){},
+		quiet:true
 	}
 })
 
