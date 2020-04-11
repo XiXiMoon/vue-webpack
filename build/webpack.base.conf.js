@@ -23,7 +23,7 @@ const baseConfig = {
 			},
 
 			{
-				test: /\.(jpe?g|png|gif|webp|svg|ico)$/,
+				test: /\.(jpe?g|png|gif|webp|ico)$/,
 				use:{
 					loader: "url-loader",
 					options:{
@@ -51,7 +51,7 @@ const baseConfig = {
 			},
 			  
 			{
-				test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
+				test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/i,
 				use: [
 				  {
 					loader: 'url-loader',

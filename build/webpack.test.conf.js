@@ -98,7 +98,7 @@ const testConfig = merge(baseConfig, {
 	
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: '/static/css/[name].[contenthash:8].css'
+			filename: './static/css/[name].[contenthash:8].css'
 		}),
 
 		new BundleAnalyzerPlugin({

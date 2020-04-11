@@ -120,7 +120,7 @@ const preConfig = merge(baseConfig, {
 			//压缩js
 			new UglifyWebpackPlugin({
                 parallel: 4	//使用多进程并行运行可提高构建速度。并发运行的默认数量：os.cpus().length - 1。
-            })
+			})
         ]
 	}
 })
