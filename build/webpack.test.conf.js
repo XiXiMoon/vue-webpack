@@ -5,7 +5,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const testConfig = merge(baseConfig, {
-    mode: "development",
+	
+    mode: "development", 
 
     devtool: "cheap-module-eval-source-map",
     

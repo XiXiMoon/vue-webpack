@@ -7,6 +7,7 @@ const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const preConfig = merge(baseConfig, {
+	
 	mode: "production",
 
     devtool: "cheap-module-source-map",
