@@ -18,7 +18,9 @@ const testConfig = merge(baseConfig, {
 						loader: MiniCssExtractPlugin.loader
 					},
 					'css-loader'
-				]
+				],
+				exclude: /node_modules/,
+				include: path.resolve(__dirname, '../src')
 			},
 
 			{
@@ -90,7 +92,9 @@ const testConfig = merge(baseConfig, {
 					},
 					'postcss-loader',
 					'stylus-loader'
-				]
+				],
+				exclude: /node_modules/,
+				include: path.resolve(__dirname, '../src')
 			},
 
 		]

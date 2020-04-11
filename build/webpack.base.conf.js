@@ -18,8 +18,9 @@ const baseConfig = {
 		rules: [
 			{
 				test: /\.jsx?$/,
+				loader: "babel-loader?cacheDirectory",
 				exclude: /node_modules/,
-				loader: "babel-loader"
+				include: path.resolve(__dirname, '../src')
 			},
 
 			{
@@ -32,7 +33,9 @@ const baseConfig = {
 						esModule: false,
 						limit: 10000   
 					}
-				}
+				},
+				exclude: /node_modules/,
+				include: path.resolve(__dirname, '../src')
 			},
 
 			{
@@ -47,7 +50,9 @@ const baseConfig = {
 					  name: 'static/media/[name].[hash:4].[ext]'
 					}
 				  }
-				]
+				],
+				exclude: /node_modules/,
+				include: path.resolve(__dirname, '../src')
 			},
 			  
 			{
@@ -62,7 +67,9 @@ const baseConfig = {
 					  name: 'static/fonts/[name].[hash:4].[ext]'
 					}
 				  }
-				]
+				],
+				exclude: /node_modules/,
+				include: path.resolve(__dirname, '../src')
 			},
 
 			{
@@ -73,7 +80,9 @@ const baseConfig = {
 					  preserveWhitespace: false
 					},
 					// hotReload: false //改为false可关闭vue文件的热重载，即关闭HotModuleReplacementPlugin功能
-				}
+				},
+				exclude: /node_modules/,
+				include: path.resolve(__dirname, '../src')
 			},
 
 			//处理html文件中图片（负责引入img，从而能被url-loader进行处理）
@@ -81,7 +90,9 @@ const baseConfig = {
 				test: /\.html$/,
                 use: [
                     'html-loader'
-                ]
+				],
+				exclude: /node_modules/,
+				include: path.resolve(__dirname, '../src')
 			}			
 		]
 	},

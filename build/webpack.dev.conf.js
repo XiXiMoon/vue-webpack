@@ -11,7 +11,9 @@ const devConfig = merge(baseConfig, {
 		rules: [
 			{
 				test: /\.css$/,
-				use: ['style-loader', 'css-loader']
+				use: ['style-loader', 'css-loader'],
+				exclude: /node_modules/,
+				include: path.resolve(__dirname, '../src')
 			},
 
 			{
@@ -81,7 +83,9 @@ const devConfig = merge(baseConfig, {
 					},
 					'postcss-loader',
 					'stylus-loader'
-				]
+				],
+				exclude: /node_modules/,
+				include: path.resolve(__dirname, '../src')
 			},
 
 		]
