@@ -7,8 +7,40 @@ const webpack = require("webpack");
 const HappyPack = require('happypack');
 const os = require('os'); // node 提供的系统操作模块
 
+
  // 根据我的系统的内核数量 指定线程池个数 也可以其他数量
 const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length})
+
+
+const plugins = [
+	new HtmlWebpackPlugin({
+		title: "vue-webpack",
+		template: path.resolve(__dirname, "../src/index.html"),
+		filename: path.resolve(__dirname, "../delop-code/index.html"),
+		minify: true,
+		inject: true
+		//chunks: ['main']
+	}),
+
+	new CleanWebpackPlugin({
+		cleanOnceBeforeBuildPatterns:[path.resolve(__dirname, "../delop-code")]
+	}),
+
+	new VueLoaderPlugin(),
+
+	new webpack.ProvidePlugin({
+		$: 'jquery',
+		_: 'lodash'
+	}),
+	
+	new HappyPack({ // 基础参数设置
+		id: 'babel', // 上面loader?后面指定的id
+		loaders: ['babel-loader?cacheDirectory'], // 实际匹配处理的loader
+		threadPool: happyThreadPool,
+		// cache: true // 已被弃用
+		verbose: true
+	})
+];
 
 const baseConfig = {
 	entry: {
@@ -103,34 +135,7 @@ const baseConfig = {
 			}			
 		]
 	},
-	plugins: [
-		new HtmlWebpackPlugin({
-			title: "vue-webpack",
-			template: path.resolve(__dirname, "../src/index.html"),
-			filename: path.resolve(__dirname, "../delop-code/index.html"),
-			minify: true
-			//chunks: ['main']
-		}),
-
-		new CleanWebpackPlugin({
-			cleanOnceBeforeBuildPatterns:[path.resolve(__dirname, "../delop-code")]
-		}),
-
-		new VueLoaderPlugin(),
-
-		new webpack.ProvidePlugin({
-			$: 'jquery',
-			_: 'lodash'
-		}),
-		
-		new HappyPack({ // 基础参数设置
-			id: 'babel', // 上面loader?后面指定的id
-			loaders: ['babel-loader?cacheDirectory'], // 实际匹配处理的loader
-			threadPool: happyThreadPool,
-			// cache: true // 已被弃用
-			verbose: true
-		})
-	],
+	plugins,
 	resolve: {
 		alias: {
 		// 写了这句，我们可以这样写代码 import Vue from 'vue', 并且引入的是vue/dist/vue.runtime.esm.js这个版本，不然默认引入的是vue.js。这个在github的vue官方仓库dist目录下有解释。
