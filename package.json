@@ -1,5 +1,6 @@
 {
   "name": "vue-webpack4",
+  "slideEffects": false,
   "version": "1.0.1",
   "description": "vue2.0+webpack4搭建的单页项目",
   "scripts": {
@@ -51,7 +52,7 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2",
-    "webpack-parallel-uglify-plugin": "^1.1.2"
+    "webpack-parallel-uglify-plugin": "^0.4.0"
   },
   "dependencies": {
     "jquery": "^3.4.1",

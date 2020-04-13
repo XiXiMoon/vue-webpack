@@ -136,13 +136,16 @@ const preConfig = merge(baseConfig, {
 			workerCount: '',	//开启几个子进程去并发的执行压缩。默认是当前运行电脑的 CPU 核数减去1
 			sourceMap: false	//是否为压缩后的代码生成对应的Source Map, 默认不生成，开启后耗时会大大增加，一般不会将压缩后的代码的sourceMap发送给网站用户的浏览器。
 		})
+
 	],
 
 	optimization: {
 		minimizer: [
 			//压缩css
 			new OptimizeCssAssetsWebpackPlugin()
-        ]
+		],
+		
+		usedExports: true
 	}
 })
 

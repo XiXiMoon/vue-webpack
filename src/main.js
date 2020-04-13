@@ -1,6 +1,8 @@
 import Vue from "vue"
 import App from './App'
+import { add } from './math.js'
 
+add(1, 2);
 alert("hello");
 
 alert("word")
