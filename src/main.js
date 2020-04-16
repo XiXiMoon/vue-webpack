@@ -19,7 +19,7 @@ import './styles/demo.less'
 //测试字体文件
 import './styles/font.styl'
 
-var avator = require("./images/2.jpeg")
+var avator = require("./images/da.jpg")
 
 console.log(avator)
 
@@ -29,6 +29,18 @@ console.log(a);
 for(let b of [1,2,3,4]) {
     console.log(b);
 }
+
+function getComponent() {
+    return import('lodash').then(({default: _}) => {            //异步加载代码
+        var element = document.createElement('div')
+        element.innerHTML = _.join(['Dell', 'Lee'], '_')
+        return element
+    })
+}
+
+getComponent().then(element => {
+    document.body.appendChild(element)
+})
 
 var vm = new Vue({
     el: "#app",

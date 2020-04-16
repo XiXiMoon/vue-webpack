@@ -44,12 +44,13 @@ const plugins = [
 
 const baseConfig = {
 	entry: {
-		main: ENTRY_PATH
+		app: ENTRY_PATH
 	},
 	output: {
 		path: path.resolve(__dirname, "../delop-code"),  
-		filename: './static/js/[name].[hash].js'
+		filename: './static/js/[name].[hash].js',
 		// publicPath: 'http://cdn.com.cn',    //打包生成的js在生成的html模板中引入的前缀，即html文件交给后端，js发部到cdn上，自动引入
+		chunkFilename: './static/js/[name].[chunkhash:5].chunk.js',
 	},
 	module: {
 		noParse: /jquery|lodash/,
@@ -136,6 +137,36 @@ const baseConfig = {
 		]
 	},
 	plugins,
+	optimization: {
+		splitChunks: {
+			chunks: "all",
+
+			maxInitialRequests: 3,	//splitChunks 在拆分chunk后，页面中需要请求的初始chunk数量不超过指定的值。所谓初始chunk，指的是页面渲染时，一开始就需要下载的js，区别于在页面加载完成后，通过异步加载的js
+
+			maxAsyncRequests: 5,	//表示按需加载文件时，并行请求的最大数目。默认为5。
+
+			minChunks: 1,	//表示一个模块至少应被minChunks个chunk所包含才能分割。默认为1。
+
+			cacheGroups: {
+				vendor: { // 将第三方模块提取出来
+					test: /node_modules/,
+					chunks: 'all',
+					name: 'vendor',
+					priority: 10, // 优先
+					enforce: true
+				},
+				commons: {
+					chunks: 'all',
+					minChunks: 2,
+					maxInitialRequests: 5,
+					minSize: 0
+				}
+			}
+		},
+		runtimeChunk: {
+			name: "manifest"
+		}
+	},
 	resolve: {
 		alias: {
 		// 写了这句，我们可以这样写代码 import Vue from 'vue', 并且引入的是vue/dist/vue.runtime.esm.js这个版本，不然默认引入的是vue.js。这个在github的vue官方仓库dist目录下有解释。
