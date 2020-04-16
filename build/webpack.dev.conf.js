@@ -110,7 +110,8 @@ const devConfig = merge(baseConfig, {
 		// publicPath: "/static/",
 		// after:{},
 		// before: function(){},
-		quiet:true
+		quiet:true,
+		historyApiFallback:true        //webpackdevServer解决单页应用的路由问题,发现后端没这个服务器地址，访问/list时，会找到根路径的index.html的内容
 	}
 })
 
