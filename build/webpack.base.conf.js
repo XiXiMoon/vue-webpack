@@ -6,6 +6,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const webpack = require("webpack");
 const HappyPack = require('happypack');
 const os = require('os'); // node 提供的系统操作模块
+const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin');
 
 
  // 根据我的系统的内核数量 指定线程池个数 也可以其他数量
@@ -39,7 +40,9 @@ const plugins = [
 		threadPool: happyThreadPool,
 		// cache: true // 已被弃用
 		verbose: true
-	})
+	}),
+
+	new ModuleConcatenationPlugin()
 ];
 
 const baseConfig = {
@@ -182,7 +185,9 @@ const baseConfig = {
   		// 我们在引入文件时可以这样写 import api from '@/api/api',将 `.jss、.vue` 添加为一个可解析的扩展名
 		extensions: ["*", ".js", ".vue"],
 
-		modules: ['node_modules']
+		modules: ['node_modules'],
+
+		mainFields:['jsnext:main','browser','main']
 	}
 };
 
