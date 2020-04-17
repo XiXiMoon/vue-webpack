@@ -1,0 +1,54 @@
+//项目样式的组合功能封装
+
+// 不换行
+.no-wrap() {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+//改变盒模型
+.box-sizing() {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+
+//css三角形
+//参数   1：三角形朝向（up:上   down:下   left：左   right：右）
+//参数   2：三角形大小
+//参数   3：三角形颜色
+.triangle(@position, @triangle-size,@triangle-color) when (@position=up){
+    width: 0;
+    height: 0;
+    border-left: @triangle-size solid transparent;
+    border-right: @triangle-size solid transparent;
+    border-bottom: @triangle-size solid @triangle-color;
+    //.posi(right);
+}
+.triangle(@position, @triangle-size,@triangle-color) when (@position=down){
+    width: 0;
+    height: 0;
+    border-left: @triangle-size solid transparent;
+    border-right: @triangle-size solid transparent;
+    border-top:  @triangle-size solid @triangle-color;
+    // .posi(right);
+}
+.triangle(@position, @triangle-size,@triangle-color) when (@position=left){
+    width: 0;
+    height: 0;
+    border-top: @triangle-size solid transparent;
+    border-right: @triangle-size solid transparent;
+    border-bottom:  @triangle-size solid @triangle-color;
+    // .posi(right);
+}
+.triangle(@position, @triangle-size,@triangle-color) when (@position=right){
+    width: 0;
+    height: 0;
+    border-top: @triangle-size solid transparent;
+    border-left: @triangle-size solid transparent;
+    border-bottom:  @triangle-size solid @triangle-color;
+     //.posi(right);
+}

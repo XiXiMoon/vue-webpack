@@ -179,6 +179,7 @@ const baseConfig = {
 		 "components": path.resolve(__dirname, "../src/components"),
 		 "service":   path.resolve(__dirname, "../src/service"),
 		 "utils": path.resolve(__dirname, '../src/utils'),
+		 "static": path.resolve(__dirname, '../src/static')
 		},
 		
 		// 添加一个 resolve.extensions 属性，方便我们引入依赖或者文件的时候可以省略后缀
