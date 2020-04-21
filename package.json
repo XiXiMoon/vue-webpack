@@ -55,6 +55,7 @@
     "webpack-parallel-uglify-plugin": "^0.4.0"
   },
   "dependencies": {
+    "core-js": "^2.6.5",
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
     "vue": "^2.6.11"
