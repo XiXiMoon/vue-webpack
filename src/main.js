@@ -8,15 +8,18 @@ import App from './App'
 import 'static/styles/index.less'
 
 //引入antM基础组件库
-import antM from "./antM"
+// import antM from "./antM"
 
-Vue.use(antM)
+// Vue.use(antM)
+
+//引入路由文件
+import router from './router'
 
 //vue框架实例化
 var vm = new Vue({
     el: "#app",
-    template:'<App/>',
-    components: {App}
+    render: h => h(App),
+    router
 })
 
 //后续可打断点调试此文件，方便研究vue的源码
