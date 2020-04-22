@@ -15,11 +15,15 @@ import 'static/styles/index.less'
 //引入路由文件
 import router from './router'
 
+//引入Vuex状态管理Store
+import store from './store'
+
 //vue框架实例化
 var vm = new Vue({
     el: "#app",
     render: h => h(App),
-    router
+    router,
+    store       // 把 store 对象提供给 “store” 选项，这可以把 store 的实例注入所有的子组件,子组件能通过 this.$store.state.XXX 访问到
 })
 
 //后续可打断点调试此文件，方便研究vue的源码

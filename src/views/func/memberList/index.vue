@@ -1,12 +1,16 @@
 <template>
     <div class="memberList-container">
         会员管理
+        <span>mapActions设置电话号码</span>
     </div>
 </template>
 
 <script>
+
 export default {
-    name: 'memberList'
+    name: 'memberList',
+    methods: {
+    }
 }
 </script>
 
