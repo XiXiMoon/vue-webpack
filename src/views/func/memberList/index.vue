@@ -41,8 +41,17 @@ export default {
         },
 
         ...mapActions({
-            saveTelPhone: 'userInfo/saveTelPhone'
+            saveTelPhone: 'userInfo/saveTelPhone'   ///将this.saveTelPhone()方法映射为this.$store.dispatch('userInfo/saveTelPhone'), saveTelPhone方法为actions中对应的函数名
         })
+
+        //演变2(此方式不适用)
+        // setPhone() {
+        //     this.saveTelPhone(this.phone);
+        // },
+
+        // ...mapActions([
+        //     'saveTelPhone'  //将this.saveTelPhone()方法映射为this.$store.dispatch('saveTelPhone')，此处用了module，不能这样写
+        // ])
     }
 }
 </script>
