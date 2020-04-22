@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import * as types from '../../../store/mutations-types'
+import { mapActions } from 'vuex';
 
 export default {
     name: 'memberList',
@@ -19,24 +19,30 @@ export default {
         }
     },
 
-    mounted() {
-        this.saveTelPhone();
-    },
     methods: {
         //mapActions(提交->Action 提交的是 mutation，而不是直接变更状态，Action 可以包含任意异步操作。 )
 
         //传统方法
+        // setPhone() {
+        //     this.saveTelPhone(this.phone);
+        // },
+
+        // saveTelPhone(phone) {
+        //     console.log(this.$store)
+        //     this.$store.dispatch({
+        //         type: 'userInfo/saveTelPhone',
+        //         telphone: phone
+        //     })
+        // }
+
+        //演变1
         setPhone() {
             this.saveTelPhone(this.phone);
         },
 
-        saveTelPhone(phone) {
-            console.log(this.$store)
-            this.$store.dispatch({
-                type: 'userInfo/saveTelPhone',
-                telphone: phone
-            })
-        }
+        ...mapActions({
+            saveTelPhone: 'userInfo/saveTelPhone'
+        })
     }
 }
 </script>
