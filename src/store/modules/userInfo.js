@@ -29,8 +29,20 @@ const mutations = {
 
 //actions
 const actions = {
-    saveTelPhone: ({commit}, telphone) => {
-        // commit(types.SET_TELPHONE, savePhone(telphone))
+
+    //传统方式1
+    // saveTelPhone(context) {
+    //     //异步操作拿回电话号码等在回调中设置
+    //     setTimeout(() => {
+    //         context.commit(types.SET_TELPHONE, '1897585499')    //成功时调用mutations底层的commit
+    //     }, 2000)
+    // }
+
+    //演变1
+    saveTelPhone({commit, state}, phone) {
+        setTimeout(() => {
+            commit(types.SET_TELPHONE, phone)
+        }, 2000)
     }
 }
 
