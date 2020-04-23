@@ -15,7 +15,11 @@ const debug = process.env.NODE_ENV !== 'production'
 console.log(debug)
 
 const createPersisted = createPersistedState({
-    storage: window.sessionStorage
+    storage: {
+        getItem: key => Cookies.get(key),
+        setItem: (key, value) => Cookies.set(key, value, { expires: 7 }),
+        removeItem: key => Cookies.remove(key)
+    }
 })
 
 const store = new Vuex.Store({
