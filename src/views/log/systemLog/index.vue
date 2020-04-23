@@ -5,8 +5,11 @@
 </template>
 
 <script>
+import { logMixin } from 'mixins/log-mixin'
+
 export default {
-    name: 'systemLog'
+    name: 'systemLog',
+    mixins: [logMixin]
 }
 </script>
 

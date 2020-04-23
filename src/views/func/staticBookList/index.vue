@@ -5,8 +5,11 @@
 </template>
 
 <script>
+import { funcMixin } from 'mixins/func-mixin'
+
 export default {
-    name: 'staticBookList'
+    name: 'staticBookList',
+    mixins: [funcMixin]
 }
 </script>
 

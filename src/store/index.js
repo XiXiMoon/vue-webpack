@@ -15,10 +15,12 @@ const debug = process.env.NODE_ENV !== 'production'
 console.log(debug)
 
 const createPersisted = createPersistedState({
-    storage: {
-        getItem: (key) => ls.get(key),
-        setItem: (key, value) => ls.set(key, value),
-        removeItem: (key) => ls.remove(key)
+    key: 'vuex',
+    reducer(val) {
+        return {    //存取哪些数据,val相当于总的vuex的state
+            userInfo: val.userInfo,
+            // hobbys: val.userInfo.hobbys
+        }
     }
 })
 
