@@ -1,12 +1,23 @@
 <template>
     <div class="registe-container">
         注册
+        {{  time |  timeLongFormat_zh}}
     </div>
 </template>
 
 <script>
+import {timeLongFormat_zh} from 'filters/time-filter.s'
+
 export default {
-    name: 'registe'
+    name: 'registe',
+    data() {
+        return {
+            time: 60000
+        }
+    },
+    filters: {
+        timeLongFormat_zh
+    }
 }
 </script>
 

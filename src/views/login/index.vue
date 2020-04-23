@@ -1,6 +1,7 @@
 <template>
     <div class="login-container">
         登录
+        {{byteSize | bytesToSize}}
     </div>
 </template>
 
@@ -9,6 +10,11 @@ import {mapActions} from 'vuex'
 
 export default {
     name: 'login',
+    data() {
+        return {
+            byteSize: 1000
+        }
+    },
     methods: {
     }
 }

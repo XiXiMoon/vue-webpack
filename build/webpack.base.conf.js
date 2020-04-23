@@ -182,7 +182,8 @@ const baseConfig = {
 		 "static": path.resolve(__dirname, '../src/static'),	//../src/static
 		 "antM": path.resolve(__dirname, '../src/antM'),
 		 "views": path.resolve(__dirname, '../src/views'),
-		 "mixins": path.resolve(__dirname, '../src/mixins')
+		 "mixins": path.resolve(__dirname, '../src/mixins'),
+		 "filters": path.resolve(__dirname, '../src/filters')
 		},
 		
 		// 添加一个 resolve.extensions 属性，方便我们引入依赖或者文件的时候可以省略后缀

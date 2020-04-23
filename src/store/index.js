@@ -12,7 +12,7 @@ Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
 
-console.log(debug)
+// console.log(debug)
 
 const createPersisted = createPersistedState({
     key: 'vuex',
@@ -33,4 +33,4 @@ const store = new Vuex.Store({
 
 export default store
 
-console.log(store.state.userInfo)
+// console.log(store.state.userInfo)

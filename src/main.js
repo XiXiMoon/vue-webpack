@@ -18,6 +18,14 @@ import router from './router'
 //引入Vuex状态管理Store
 import store from './store'
 
+//引入filters过滤
+import * as filters from './filters/filter-global'
+
+// console.log(filters)
+Object.keys(filters).forEach(key => {
+    Vue.filter(key, filters[key])
+})
+
 //vue框架实例化
 var vm = new Vue({
     el: "#app",
