@@ -16,9 +16,9 @@ console.log(debug)
 
 const createPersisted = createPersistedState({
     storage: {
-        getItem: key => Cookies.get(key),
-        setItem: (key, value) => Cookies.set(key, value, { expires: 7 }),
-        removeItem: key => Cookies.remove(key)
+        getItem: (key) => ls.get(key),
+        setItem: (key, value) => ls.set(key, value),
+        removeItem: (key) => ls.remove(key)
     }
 })
 
