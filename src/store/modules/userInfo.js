@@ -23,6 +23,7 @@ const getters = {
 //实质上就是一些函数，参数有state、传进来的参数(可为对象可为数组等，需要做相应改动即可)
 const mutations = {
     [types.SET_TELPHONE](state, telphone) {
+        // console.log(state)  //模块的局部状态
         state.telphone = telphone
     },
 }
@@ -39,13 +40,14 @@ const actions = {
     // }
 
     //演变1
-    saveTelPhone({commit, state}, phone) {
+    saveTelPhone({commit, state, rootState}, phone) {
         setTimeout(() => {
+            console.log(state)  //局部vuex的状态：userInfo
+            console.log(rootState)  //根节点状态：整个vuex状态
             commit(types.SET_TELPHONE, phone)
         }, 2000)
     }
 }
-
 
 export default {
     namespaced: true,
