@@ -183,7 +183,8 @@ const baseConfig = {
 		 "antM": path.resolve(__dirname, '../src/antM'),
 		 "views": path.resolve(__dirname, '../src/views'),
 		 "mixins": path.resolve(__dirname, '../src/mixins'),
-		 "filters": path.resolve(__dirname, '../src/filters')
+		 "filters": path.resolve(__dirname, '../src/filters'),
+		 "directives": path.resolve(__dirname, '../src/directives')
 		},
 		
 		// 添加一个 resolve.extensions 属性，方便我们引入依赖或者文件的时候可以省略后缀

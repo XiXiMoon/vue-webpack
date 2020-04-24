@@ -18,12 +18,20 @@ import router from './router'
 //引入Vuex状态管理Store
 import store from './store'
 
-//引入filters过滤
+//引入filters全局过滤器
 import * as filters from './filters/filter-global'
 
 // console.log(filters)
 Object.keys(filters).forEach(key => {
     Vue.filter(key, filters[key])
+})
+
+//引入directives全局自定义指令
+import directives from './directives'
+
+// console.log(directives)
+Object.keys(directives).forEach(key => {
+    Vue.directive(key, directives[key])
 })
 
 //vue框架实例化
