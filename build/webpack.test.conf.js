@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require("webpack");
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -6,7 +7,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 const testConfig = merge(baseConfig, {
 	
-    mode: "development", 
+    // mode: "development", 
 
     devtool: "cheap-module-eval-source-map",
     
@@ -108,6 +109,10 @@ const testConfig = merge(baseConfig, {
 
 		new BundleAnalyzerPlugin({
 			analyzerMode: 'static'
+		}),
+
+		new webpack.EnvironmentPlugin({
+			NODE_ENV: 'test',
 		})
 	]
 })

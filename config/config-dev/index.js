@@ -1,10 +1,9 @@
 //开发环境配置, 需单独一个命令开启全mock数据，一个命令开启全真实接口数据，一个命令开启当真实接口数据挂掉用mock数据替代的
+import utils from '../../tool'
+import devEnvConfig from './env-conf.dev'
+import devWebpackConfig from './webpack-conf.dev'
 
-const utils = require("../../tool");
-const devWebpackConfig = require("./webpack-conf.dev");
 
-const devConfig = utils.extend({}, devWebpackConfig);
+const devConfig = utils.extend({}, devEnvConfig, devWebpackConfig);
 
-module.exports = {
-    "devConfig": devConfig
-};
+export default devConfig

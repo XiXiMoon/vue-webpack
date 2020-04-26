@@ -34,6 +34,9 @@ Object.keys(directives).forEach(key => {
     Vue.directive(key, directives[key])
 })
 
+import axios from './utils/http'
+console.log(axios)
+
 //vue框架实例化
 var vm = new Vue({
     el: "#app",

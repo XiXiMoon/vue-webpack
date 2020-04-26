@@ -9,6 +9,7 @@
                     "safari":"11.1",
                     "ie": "9"
                 },
+                "corejs": "2",
                 "useBuiltIns": "usage"          //单个文件中无需引入babel-profill
             }
         ]

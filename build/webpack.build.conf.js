@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require("webpack");
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -8,7 +9,7 @@ const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 
 const preConfig = merge(baseConfig, {
 	
-	mode: "production",
+	// mode: "production",
 
     devtool: "cheap-module-source-map",
     
@@ -135,8 +136,11 @@ const preConfig = merge(baseConfig, {
 			cacheDir: '',	//缓存压缩后的结果，下次遇到一样的输入时直接从缓存中获取压缩后的结果并返回，cacheDir 用于配置缓存存放的目录路径。默认不会缓存，想开启缓存请设置一个目录路径。
 			workerCount: '',	//开启几个子进程去并发的执行压缩。默认是当前运行电脑的 CPU 核数减去1
 			sourceMap: false	//是否为压缩后的代码生成对应的Source Map, 默认不生成，开启后耗时会大大增加，一般不会将压缩后的代码的sourceMap发送给网站用户的浏览器。
-		})
+		}),
 
+		new webpack.EnvironmentPlugin({
+			NODE_ENV: 'production',
+		})
 	],
 
 	optimization: {
