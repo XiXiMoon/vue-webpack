@@ -7,7 +7,9 @@
 import utils from '../tool'
 import devConfig from './config-dev'
 import testConfig from './config-test'
+import preConfig from './config-pre'
+import prodConfig from './config-prod'
 
-const envConfig = utils.extend({}, devConfig, testConfig);
+const envConfig = utils.extend({}, devConfig, testConfig, preConfig, prodConfig);
 
 export default envConfig;

@@ -4,6 +4,8 @@ import testEnvConfig from './env-conf.test'
 import testWebpackConfig from './webpack-conf.test'
 
 
-const testConfig = utils.extend({}, testEnvConfig, testWebpackConfig);
+const testConfig = {
+    "testConfig": utils.extend({}, testEnvConfig, testWebpackConfig)
+}
 
 export default testConfig

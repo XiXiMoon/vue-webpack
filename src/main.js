@@ -1,6 +1,8 @@
 //引入vue框架文件，方便后面实例化
 import Vue from "vue"
 
+GLOBAL.vbus = new Vue()
+
 //引入项目整体的根组件
 import App from './App'
 
@@ -34,8 +36,10 @@ Object.keys(directives).forEach(key => {
     Vue.directive(key, directives[key])
 })
 
-import axios from './utils/http'
-console.log(axios)
+//挂载其它插件
+import inject from 'plugins/inject'
+
+Vue.use(inject)
 
 //vue框架实例化
 var vm = new Vue({

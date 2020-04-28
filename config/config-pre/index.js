@@ -1,9 +1,11 @@
 //预发布环境配置
-const utils = require("../../tool");
-const preWebpackConfig = require("./webpack-conf.pre");
+import utils from '../../tool'
+import preEnvConfig from './env-conf.pre'
+import preWebpackConfig from './webpack-conf.pre'
 
-const preConfig = utils.extend({}, preWebpackConfig);
 
-module.exports = {
-    "preConfig": preConfig
-};
+const preConfig = {
+    "preConfig": utils.extend({}, preEnvConfig, preWebpackConfig)
+}
+
+export default preConfig

@@ -4,6 +4,8 @@ import devEnvConfig from './env-conf.dev'
 import devWebpackConfig from './webpack-conf.dev'
 
 
-const devConfig = utils.extend({}, devEnvConfig, devWebpackConfig);
+const devConfig = {
+    "devConfig": utils.extend({}, devEnvConfig, devWebpackConfig)
+}
 
 export default devConfig

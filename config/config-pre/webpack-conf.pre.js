@@ -2,9 +2,9 @@
 const path = require("path");
 const env = process.env.NODE_ENV;
 
-module.exports = {
-    NODE_ENV: "pre",
-    BASE_URL: "https://www.huihun.com",  //打开地址
-    BASE_API: "http://124.47.119.154:8175",   //接口地址
-    OUTPUT_PATH: "../../delop-code/pre",   //输出目录
+const webpackConfig = {
+    MODE: 'production',
+    DEV_TOOLS: 'cheap-module-source-map'
 }
+
+export default webpackConfig

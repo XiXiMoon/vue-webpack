@@ -7,7 +7,9 @@
     "dev": "webpack-dev-server --inline --progress --config ./build/webpack.dev.conf.js",
     "delopToTest": "cross-env NODE_ENV=test webpack --config build/webpack.test.conf.js",
     "delopToPre": "cross-env NODE_ENV=pre webpack --config build/webpack.build.conf.js",
-    "delopToProd": "cross-env NODE_ENV=prod webpack --config build/webpack.build.conf.js"
+    "delopToProd": "cross-env NODE_ENV=prod webpack --config build/webpack.build.conf.js",
+    "mock": "node mock/index.js",
+    "mock-dev": "node mock/index.js | webpack-dev-server --inline --progress --config ./build/webpack.dev.conf.js"
   },
   "repository": {
     "type": "git",
@@ -36,6 +38,7 @@
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.9.0",
+    "mockjs": "^1.1.0",
     "node-sass": "^4.13.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
@@ -59,7 +62,7 @@
     "core-js": "^2.6.11",
     "jquery": "^3.4.1",
     "js-cookie": "^2.2.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.4",
     "qs": "^6.9.3",
     "secure-ls": "^1.2.6",
     "vue": "^2.6.11",

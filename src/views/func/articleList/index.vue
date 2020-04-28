@@ -3,7 +3,16 @@
         文章管理
         <!-- {{ getHobbys }} -->
         {{habbyCount}}
-
+        <div>演示axios断网处理</div>
+        <div @click="deleteArticle">点击演示</div>
+        <div>/api/weekly/getChapterById接口：文章详情数据</div>
+        <div>
+            {{articleDetail}}
+        </div><br>
+        <div>/api/weekly/getHotChapterByWeeklyId接口：查看本期文章</div>
+        <div>
+            {{hotArticleDeatil}}
+        </div>
     </div>
 </template>
 
@@ -12,6 +21,36 @@ import { mapGetters } from 'vuex'
 
 export default {
     name: 'articlelList',
+    data() {
+        return {
+            articleDetail: '',
+            hotArticleDeatil: ''
+        }
+    },
+    mounted() {
+        this.getArticleDetail()
+        //this.getHotArticle()
+    },
+    methods: {
+        async getArticleDetail() {
+            const chapterId = 12    //文章id
+            const res = await this.$api['articleList/getChapterById']({chapterId})
+            console.log(res)
+            this.articleDetail = res
+        },
+        async getHotArticle() {
+            const weeklyId = 10     //周刊id
+            const res = await this.$api['articleList/getHotChapterByWeeklyId']({weeklyId})
+            console.log(res)
+            this.hotArticleDeatil = res
+        },
+        async deleteArticle() {
+            const userId = 55555
+            const weeklyIds = [this.habbyCount]
+            const res = await this.$api['articleList/deleteByIds']({userId, weeklyIds})
+            console.log(res)
+        }
+    },
     computed: {
         //mapGetters(获取->里面可以做操作再返回出去，类似store的计算属性)用法：
 

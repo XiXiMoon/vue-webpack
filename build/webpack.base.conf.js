@@ -185,7 +185,9 @@ const baseConfig = {
 		 "views": path.resolve(__dirname, '../src/views'),
 		 "mixins": path.resolve(__dirname, '../src/mixins'),
 		 "filters": path.resolve(__dirname, '../src/filters'),
-		 "directives": path.resolve(__dirname, '../src/directives')
+		 "directives": path.resolve(__dirname, '../src/directives'),
+		 "config": path.resolve(__dirname, '../config'),
+		 "plugins": path.resolve(__dirname, '../src/plugins')
 		},
 		
 		// 添加一个 resolve.extensions 属性，方便我们引入依赖或者文件的时候可以省略后缀
