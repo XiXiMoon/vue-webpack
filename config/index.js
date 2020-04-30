@@ -4,7 +4,7 @@
 // const preConfig = require("./config-pre");
 // const prodConfig = require("./config-prod");
 
-import utils from '../tool'
+import {utils} from '../src/utils/tools'
 import devConfig from './config-dev'
 import testConfig from './config-test'
 import preConfig from './config-pre'

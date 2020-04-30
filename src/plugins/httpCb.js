@@ -48,7 +48,6 @@ export function responseSuccessFunc (responseObj) {
     const res = responseObj.data
     if (status === 200) {
         const { subCode } =  res
-        console.log(res)
         const errNotToastSubcode = responseObj.config.subCode.err_notToast      //错误的情况下不需要弹窗的
         const succNotToastSubcode = responseObj.config.subCode.success          //正常的情况下是否需要弹窗不在上层做处理，一律认为是不需要弹窗的，由底层去处理
         const notToastSubcode = errNotToastSubcode.concat(succNotToastSubcode)  //所有不需要弹窗的subCode

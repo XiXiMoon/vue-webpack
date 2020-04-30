@@ -1,5 +1,5 @@
 //测试环境配置，全部接真实api数据
-import utils from '../../tool'
+import {utils} from '../../src/utils/tools'
 import testEnvConfig from './env-conf.test'
 import testWebpackConfig from './webpack-conf.test'
 

@@ -1,6 +1,6 @@
 //生产环境(线上环境)配置
 
-import utils from '../../tool'
+import {utils} from '../../src/utils/tools'
 import prodEnvConfig from './env-conf.prod'
 import prodWebpackConfig from './webpack-conf.prod'
 

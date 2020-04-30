@@ -16,7 +16,7 @@ const envConfig = {
         mode: 'history'
     },
     API_DEFAULT_CONFIG: {  //API 默认配置
-        mockBaseURL: 'localhost:3000',   //express本地mock的baseURL
+        mockBaseURL: 'http://localhost:3000',   //express本地mock的baseURL
         mock: true,       //是否需要强制开启mock数据功能,
         debug: false,
         sep: '/'            //分隔符
