@@ -3,8 +3,11 @@ import axios from './http'
 import { assert } from 'utils/tools'
 import config from 'config'
 import API_CONFIG from 'service/api'    //service中的API请求列表
+import _pick from 'lodash/pick'
+import _assign from 'lodash/assign'
+import _isEmpty from 'lodash/isEmpty'
 
-console.log(API_CONFIG)
+// console.log(API_CONFIG)
 
 const API_DEFAULT_CONFIG = config[process.env.NODE_ENV+"Config"].API_DEFAULT_CONFIG;    //API默认设置
 
@@ -52,9 +55,9 @@ class MakeApi {
 
             Object.defineProperty(this.api, `${namespace}${sep}${name}`, {
                 value(outerParams, outerOptions) {
-                    const _data = _.isEmpty(outerParams) ? params : _.pick(_.assign({}, params, outerParams), Object.keys(params))
+                    const _data = _isEmpty(outerParams) ? params : _pick(_assign({}, params, outerParams), Object.keys(params))
                     const _options = isMock ? {url, desc, baseURL, method, subCode} : {url, desc, method, subCode}
-                    return axios(_normoalize(_.assign(_options, outerOptions), _data))
+                    return axios(_normoalize(_assign(_options, outerOptions), _data))
                 }
             })      
         })

@@ -13,7 +13,7 @@ import {requestSuccessFunc, requestFailFunc, responseSuccessFunc, responseFailFu
 
 const INSTANCE_DEFAULT_CONFIG = config[process.env.NODE_ENV+"Config"].AXIOS_DEFAULT_CONFIG;
 
-console.log(INSTANCE_DEFAULT_CONFIG)
+// console.log(INSTANCE_DEFAULT_CONFIG)
 
 // alert(process.env.NODE_ENV)
 let axiosInstance = {}

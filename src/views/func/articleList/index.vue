@@ -9,6 +9,7 @@
         <div>
             {{articleDetail}}
         </div><br>
+        <div>audioSrc为：{{articleDetail.hello}}</div><br>
         <div>/api/weekly/getHotChapterByWeeklyId接口：查看本期文章</div>
         <div>
             {{hotArticleDeatil}}
@@ -18,12 +19,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import articleDetailModel from '../../../model/articleDetail.model'
 
 export default {
     name: 'articlelList',
     data() {
         return {
-            articleDetail: '',
+            articleDetail: {},
             hotArticleDeatil: ''
         }
     },
@@ -35,8 +37,9 @@ export default {
         async getArticleDetail() {
             const chapterId = 12    //文章id
             const res = await this.$api['articleList/getChapterById']({chapterId})
-            console.log(res)
-            this.articleDetail = res
+            console.log("res.bodyMessage为："+res.bodyMessage)
+            this.articleDetail = articleDetailModel.parse(JSON.parse(res.bodyMessage))
+            console.log(this.articleDetail)
         },
         async getHotArticle() {
             const weeklyId = 10     //周刊id

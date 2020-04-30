@@ -57,7 +57,7 @@ const baseConfig = {
 	},
 	performance: false,
 	module: {
-		noParse: /jquery|lodash/,
+		// noParse: /jquery|lodash/,
 
 		rules: [
 			{

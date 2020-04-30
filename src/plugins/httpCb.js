@@ -43,8 +43,8 @@ export function responseSuccessFunc (responseObj) {
     // }
 
     const { status } = responseObj     //http状态码
-    console.log(status)
-    console.log(responseObj)
+    // console.log(status)
+    // console.log(responseObj)
     const res = responseObj.data
     if (status === 200) {
         const { subCode } =  res
@@ -68,8 +68,9 @@ export function responseSuccessFunc (responseObj) {
 export function responseFailFunc (responseError) {
     // 响应失败，可根据 responseError.message 和 responseError.response.status 来做监控处理
 
+    // console.log(responseError)
     const { response } = responseError
-    //console.log(response)       //相当于console.log(responseError.response)
+    // console.log(response)       //相当于console.log(responseError.response)
     if (response) {     //请求已发出，但不在2XX的范围
         errorHandle(response.status, response.data.message)     //第一个参数是http状态码，第二个是返回的提示信息
         return Promise.reject(response)
