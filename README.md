@@ -95,7 +95,6 @@ unit-test           //单元测试目录
 - [Vue封装常用指令Directive](https://blog.csdn.net/weixin_30299709/article/details/94873323)
 - [git仓库：vue-develop-template](https://github.com/PerseveranceZ/vue-develop-template)
 
-
 ## 需完善的
 - webpack搭建更加配置化，代码更加灵活而非现在这么死板
 - 有些模块的文件目录结构及放置位置应该更加标准、清晰
@@ -109,13 +108,16 @@ unit-test           //单元测试目录
 - 收集常见的iconfont字体文件、常见的filters、常见的directives
 - 像其它UI组件库一样丰富基础组件库(裁剪、断点上传等)
 
-
 ## 未完成的
 - 前端监控方案(action-log目录)
 - 单元测试(unit-test目录)
 - 前端发布(npm命令集成发布及了解相关所有发布的知识)
 
-
-
-
-
+## 需要整理的
+- webpack搭建过程整理
+- webpack面试题整理
+- 性能优化方案及面试题整理
+- 整理base.less(H5和web)、mixin.less(H5和web)、reset.less(H5和web)
+- 收集常见的utils、directive、filter
+- 制定directives、filter、components、css、命名规则
+- 整理less、stylus、scss的使用及引用方法等
