@@ -121,3 +121,5 @@ unit-test           //单元测试目录
 - 收集常见的utils、directive、filter
 - 制定directives、filter、components、css、命名规则
 - 整理less、stylus、scss的使用及引用方法等
+- vue的用法总结
+- vue的面试题整理
