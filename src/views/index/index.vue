@@ -1,6 +1,7 @@
 <template>
     <div class="index-container">
         首页 
+        <span @click="app">点击了</span>
         {{getTelphone}}
         <!-- {{telphone}} -->
     </div>
@@ -11,6 +12,12 @@ import { mapState } from 'vuex'
 
 export default {
     name: 'index',
+    methods: {
+        app() {
+            const a = '我点击了';
+            console.log(a)
+        }
+    },
     computed: {
         //mapState(直接获取->中间不做任何操作)用法：
 

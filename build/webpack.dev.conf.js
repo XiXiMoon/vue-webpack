@@ -3,6 +3,7 @@ const webpack = require("webpack");
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf');
 const friendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 const devConfig = merge(baseConfig, {
 	// mode: "development",
@@ -99,7 +100,9 @@ const devConfig = merge(baseConfig, {
 
 		new webpack.EnvironmentPlugin({
 			NODE_ENV: 'dev',
-		})
+		}),
+
+		new HardSourceWebpackPlugin()
 	],
 
 	//整个页面会刷新，和热更新不同
@@ -115,6 +118,7 @@ const devConfig = merge(baseConfig, {
 		// after:{},
 		// before: function(){},
 		quiet:true,
+		disableHostCheck: true, //  新增该配置，解决IE9和IE10报错
 		historyApiFallback:true        //webpackdevServer解决单页应用的路由问题,发现后端没这个服务器地址，访问/list时，会找到根路径的index.html的内容
 	}
 })

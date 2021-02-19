@@ -39,7 +39,7 @@ Object.keys(directives).forEach(key => {
 //挂载其它插件
 import inject from 'plugins/inject'
 
-Vue.use(inject)
+Vue.use(inject) //Vue.use使用插件，inject其实就是一个install的函数
 
 //vue框架实例化
 var vm = new Vue({
@@ -50,6 +50,6 @@ var vm = new Vue({
 })
 
 //后续可打断点调试此文件，方便研究vue的源码
-// console.log(Vue);
-// console.log(App);
-// console.log(vm);
+console.log(Vue);
+console.log(App);
+console.log(vm);

@@ -3,7 +3,6 @@ const path = require("path");
 const env = process.env.NODE_ENV;
 
 const webpackConfig = {
-    MODE: 'production',
     DEV_TOOLS: 'cheap-module-source-map'
 }
 

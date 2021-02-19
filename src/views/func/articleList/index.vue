@@ -9,7 +9,10 @@
         <div>
             {{articleDetail}}
         </div><br>
-        <div>audioSrc为：{{articleDetail.hello}}</div><br>
+        <div>
+            {{articleDetail.total}}
+        </div><br>
+        <div>audioSrc为：{{articleDetail}}</div><br>
         <div>/api/weekly/getHotChapterByWeeklyId接口：查看本期文章</div>
         <div>
             {{hotArticleDeatil}}
@@ -31,15 +34,31 @@ export default {
     },
     mounted() {
         this.getArticleDetail()
+        this.test()
         //this.getHotArticle()
     },
     methods: {
         async getArticleDetail() {
             const chapterId = 12    //文章id
             const res = await this.$api['articleList/getChapterById']({chapterId})
-            console.log("res.bodyMessage为："+res.bodyMessage)
-            this.articleDetail = articleDetailModel.parse(JSON.parse(res.bodyMessage))
+            console.log("res.bodyMessage为："+res)
+            this.articleDetail = articleDetailModel.parse(res)
             console.log(this.articleDetail)
+
+            const m = new Map();
+            const o = {p: 'Hello World'};
+
+            m.set(o, 'content')
+            m.get(o) // "content"
+
+
+            const iterable = ['mini', 'mani', 'mo'];
+            
+            for (const value of iterable) {
+            console.log(value);
+            }
+
+            console.log('哈哈', this.articleDetail.total)
         },
         async getHotArticle() {
             const weeklyId = 10     //周刊id

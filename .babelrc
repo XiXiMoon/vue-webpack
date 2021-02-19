@@ -2,14 +2,14 @@
     "presets":[
         [
             "@babel/preset-env", {
-                "targets": {
+                "targets": { //目标环境
                     "edge": "17",
                     "firefox": "60",
                     "chrome":"67",
                     "safari":"11.1",
                     "ie": "9"
                 },
-                "corejs": "2",
+                "corejs": "3.8.3",      //代表需要使用corejs的版本; npm install --save @babel/runtime-corejs2
                 "useBuiltIns": "usage"          //单个文件中无需引入babel-profill
             }
         ]

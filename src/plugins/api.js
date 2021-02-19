@@ -7,9 +7,9 @@ import _pick from 'lodash/pick'
 import _assign from 'lodash/assign'
 import _isEmpty from 'lodash/isEmpty'
 
-// console.log(API_CONFIG)
+console.log('API_CONFIG', API_CONFIG)
 
-const API_DEFAULT_CONFIG = config[process.env.NODE_ENV+"Config"].API_DEFAULT_CONFIG;    //API默认设置
+const MOCK_DEFAULT_CONFIG = config[process.env.NODE_ENV+"Config"].MOCK_DEFAULT_CONFIG;    //API默认设置
 
 
 class MakeApi {
@@ -46,7 +46,7 @@ class MakeApi {
     }) {
         config.forEach( api => {
             const {name, desc, params, method, mockEnable, path, mockPath, subCode } = api
-            const isMock = process.env.NODE_ENV === 'dev' ? (mock && mockEnable) : false
+            const isMock = process.env.NODE_ENV === 'dev' ? (mock && !mockEnable) : false
             const url = isMock ? mockPath : path
             const baseURL = isMock && mockBaseURL
 
@@ -75,8 +75,10 @@ function _normoalize(options, data) {
 
 let a = new MakeApi({
 	config: API_CONFIG,
-	...API_DEFAULT_CONFIG
+	...MOCK_DEFAULT_CONFIG
 })['api']
+
+console.log('a', a)
 
 export default a
 

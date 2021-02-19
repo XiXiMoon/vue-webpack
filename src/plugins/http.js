@@ -15,6 +15,9 @@ const INSTANCE_DEFAULT_CONFIG = config[process.env.NODE_ENV+"Config"].AXIOS_DEFA
 
 // console.log(INSTANCE_DEFAULT_CONFIG)
 
+console.log('config', config)
+console.log('config1', config[process.env.NODE_ENV+"Config"])
+
 // alert(process.env.NODE_ENV)
 let axiosInstance = {}
 //axios示例

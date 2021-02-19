@@ -4,7 +4,7 @@ export default [
         method: 'GET',
         desc: '根据文章id查询文章详情',
         path: '/api/weekly/getChapterById',
-        mockEnable: false,   //true为开启，false为关闭
+        mockEnable: false,   //true为关闭Mock，false或不写为看全局config当前环境下的MOCK_DEFAULT_CONFIG.mock
         mockPath: '/api/article/getChapterById',
         params: {
             chapterId: 0        //文章id，int

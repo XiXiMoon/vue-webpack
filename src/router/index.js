@@ -3,71 +3,82 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const Login = (resolve) => {    //登录
-    import('views/login').then((module) => {
-        resolve(module)
-    })
+//路由懒加载第一种方式
+// const Login = (resolve) => {    //登录
+//     import('views/login').then((module) => {
+//         resolve(module)
+//     })
+// }
+
+// const Registe = (resolve) => {    //注册
+//     import('views/registe').then((module) => {
+//         resolve(module)
+//     })
+// }
+
+// const Index = (resolve) => {    //首页
+//     import('views/Index').then((module) => {
+//         resolve(module)
+//     })
+// }
+
+// const ArticleList = (resolve) => {   //文章管理
+//     import('views/func/articleList').then((module) => {
+//         resolve(module)
+//     })
+// }
+
+// const FeedbackList = (resolve) => {   //反馈管理
+//     import('views/func/feedbackList').then((module) => {
+//         resolve(module)
+//     })
+// }
+
+// const MemberList = (resolve) => {   //会员管理
+//     import('views/func/memberList').then((module) => {
+//         resolve(module)
+//     })
+// }
+
+// const PackageList = (resolve) => {   //套餐管理
+//     import('views/func/packageList').then((module) => {
+//         resolve(module)
+//     })
+// }
+
+// const PermissionList = (resolve) => {   //权限管理
+//     import('views/func/permissionList').then((module) => {
+//         resolve(module)
+//     })
+// }
+
+// const StaticbookList = (resolve) => {   //静态文案管理
+//     import('views/func/staticBookList').then((module) => {
+//         resolve(module)
+//     })
+// }
+
+// const UserList = (resolve) => {   //用户管理
+//     import('views/func/userList').then((module) => {
+//         resolve(module)
+//     })
+// }
+
+// const SystemLog = (resolve) => {   //系统权限
+//     import('views/log/systemLog').then((module) => {
+//         resolve(module)
+//     })
+// }
+
+//路由懒加载第二种方式
+//components处再用loadView('login')
+//此种方式可能会导致重命名失败，可采用第三种
+function loadView(view) {
+    return () => import(/* webpackChunName: "view-[request]" */ `@/views/login`) //注意路径的修改
 }
 
-const Registe = (resolve) => {    //注册
-    import('views/registe').then((module) => {
-        resolve(module)
-    })
-}
 
-const Index = (resolve) => {    //首页
-    import('views/Index').then((module) => {
-        resolve(module)
-    })
-}
 
-const ArticleList = (resolve) => {   //文章管理
-    import('views/func/articleList').then((module) => {
-        resolve(module)
-    })
-}
-
-const FeedbackList = (resolve) => {   //反馈管理
-    import('views/func/feedbackList').then((module) => {
-        resolve(module)
-    })
-}
-
-const MemberList = (resolve) => {   //会员管理
-    import('views/func/memberList').then((module) => {
-        resolve(module)
-    })
-}
-
-const PackageList = (resolve) => {   //套餐管理
-    import('views/func/packageList').then((module) => {
-        resolve(module)
-    })
-}
-
-const PermissionList = (resolve) => {   //权限管理
-    import('views/func/permissionList').then((module) => {
-        resolve(module)
-    })
-}
-
-const StaticbookList = (resolve) => {   //静态文案管理
-    import('views/func/staticBookList').then((module) => {
-        resolve(module)
-    })
-}
-
-const UserList = (resolve) => {   //用户管理
-    import('views/func/userList').then((module) => {
-        resolve(module)
-    })
-}
-
-const SystemLog = (resolve) => {   //系统权限
-    import('views/log/systemLog').then((module) => {
-        resolve(module)
-    })
-}
 
 
 const routes = [
@@ -77,15 +88,15 @@ const routes = [
     },
     {
         path: '/login',
-        component: Login
+        component: resolve => require.ensure([], () => resolve(require('views/login')), 'login')
     },
     {
         path: '/registe',
-        component: Registe
+        component: resolve => require.ensure([], () => resolve(require('views/registe')), 'registe')
     },
     {
         path: '/index',
-        component: Index
+        component: resolve => require.ensure([], () => resolve(require('views/index')), 'index')
     },
     {
         path: '/func',
@@ -93,31 +104,31 @@ const routes = [
         children: [
             {
                 path: 'articleList',
-                component: ArticleList
+                component: resolve => require.ensure([], () => resolve(require('views/func/articleList')), 'articleList')
             },
             {
                 path: 'feedbackList',
-                component: FeedbackList
+                component: resolve => require.ensure([], () => resolve(require('views/func/feedbackList')), 'feedbackList')
             },
             {
                 path: 'memberList',
-                component: MemberList
+                component: resolve => require.ensure([], () => resolve(require('views/func/memberList')), 'memberList')
             },
             {
                 path: 'packageList',
-                component: PackageList
+                component: resolve => require.ensure([], () => resolve(require('views/func/packageList')), 'packageList')
             },
             {
                 path: 'permissionList',
-                component: PermissionList
+                component: resolve => require.ensure([], () => resolve(require('views/func/permissionList')), 'permissionList')
             },
             {
                 path: 'staticBookList',
-                component: StaticbookList
+                component: resolve => require.ensure([], () => resolve(require('views/func/staticBookList')), 'staticBookList')
             },
             {
                 path: 'userList',
-                component: UserList
+                component: resolve => require.ensure([], () => resolve(require('views/func/userList')), 'userList')
             }
         ]
     },
@@ -127,7 +138,7 @@ const routes = [
         children: [
             {
                 path: 'systemLog',
-                component: SystemLog
+                component: resolve => require.ensure([], () => resolve(require('views/log/systemLog')), 'systemLog')
             }
         ]
     }

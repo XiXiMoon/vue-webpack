@@ -1,6 +1,8 @@
 import config from 'config'
 import router from '../router'
 
+console.log('123', config[process.env.NODE_ENV+"Config"].DEBUG_CEFAILT_CONFIG)
+
 const CONSOLE_REQUEST_ENABLE = config[process.env.NODE_ENV+"Config"].DEBUG_CEFAILT_CONFIG.consoleRequestEnable; //是否开启请求参数打印
 
 /**
@@ -55,7 +57,7 @@ export function responseSuccessFunc (responseObj) {
         if (isNeedToast) {
             //调用全局弹窗，弹窗信息为res.message
         }
-        return Promise.resolve(res)
+        return Promise.resolve(res.bodyMessage)
     }else{
         return Promise.reject(res)
     }
